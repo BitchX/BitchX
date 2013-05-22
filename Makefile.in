@@ -212,9 +212,21 @@ installdll_local: Makefile dll/Makefile
 
 installhelp: installdirs
 	cd $(top_srcdir)/bitchx-docs && \
-		find . -name .svn -prune -o -print | cpio -pdmu -R `id -un`:`id -gn` "$(DESTDIR)$(HELPDIR)"
-	(find "$(DESTDIR)$(HELPDIR)" -type f ! -name '*.bz2' ! -name '*.gz' | \
-		(xargs bzip2 -9f || xargs gzip -9f) || :) 2>/dev/null
+		for d in `find . -name .svn -prune -o -type d ! -name . -print`; do \
+			umask 022 && ../mkinstalldirs "$(DESTDIR)$(HELPDIR)/$$d"; \
+			for f in "$$d/"*; do \
+				if test -f "$$f"; then \
+					$(INSTALL_DATA) "$$f" "$(DESTDIR)$(HELPDIR)/$$d"; \
+				fi; \
+			done; \
+		done
+	for f in $(top_srcdir)/bitchx-docs/*; do \
+		if test -f "$$f"; then \
+			$(INSTALL_DATA) "$$f" "$(DESTDIR)$(HELPDIR)"; \
+		fi; \
+	done;
+	-(find "$(DESTDIR)$(HELPDIR)" -type f ! -name '*.bz2' ! -name '*.gz' | \
+		(xargs bzip2 -9f || xargs gzip -9f)) 2>/dev/null
 
 installbin: installirc @INSTALL_EXTRAS@
 
