@@ -798,13 +798,14 @@ void create_fsets(Window *win, int ansi)
 #endif
 }
 
-int save_formats(FILE *outfile)
+int save_formats(void)
 {
-char thefile[BIG_BUFFER_SIZE+1];
-char *p;
-int i;
-int count = 0;
-FsetNumber *tmp;
+	FILE *outfile;
+	char thefile[BIG_BUFFER_SIZE+1];
+	char *p;
+	int i;
+	int count = 0;
+	FsetNumber *tmp;
 
 #if defined(__EMX__) || defined(WINNT)
 	sprintf(thefile, "%s/%s.fmt", get_string_var(CTOOLZ_DIR_VAR), version);
@@ -813,10 +814,10 @@ FsetNumber *tmp;
 #endif
 	p = expand_twiddle(thefile);
 	outfile = fopen(p, "w");
+	new_free(&p);
 	if (!outfile)
 	{
 		bitchsay("Cannot open file %s for saving!", thefile);
-		new_free(&p);
 		return 1;
 	}
 	for (i = 0; i < NUMBER_OF_FSET; i++)	
@@ -835,7 +836,6 @@ FsetNumber *tmp;
 	
 	fclose(outfile);
 	bitchsay("Saved %d formats to %s", count, thefile);
-	new_free(&p);
 	return 0;
 }
 

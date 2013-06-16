@@ -73,7 +73,7 @@ static	int	help_show_directory = 0;
 static	char	help_topic_list[BIG_BUFFER_SIZE + 1];
 static	Window *help_window = (Window *) 0;
 static	char	no_help[] = "NOHELP";
-static	char	paused_topic[128];
+static	char	paused_topic[BIG_BUFFER_SIZE + 1];
 static	char *	this_arg;
 static	int	use_help_window = 0;
 

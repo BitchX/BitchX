@@ -82,7 +82,6 @@ static	void	set_ov_mode (Window *, char *, int);
 static	void	set_away_time (Window *, char *, int);
 static	void	reinit_screen (Window *, char *, int);
 	void	reinit_status (Window *, char *, int);
-	int	save_formats (FILE *);
 static	void	set_clock_format (Window *, char *, int);
 	void	create_fsets (Window *, int);
 	void	setup_ov_mode (int, int, int);
