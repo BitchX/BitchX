@@ -343,6 +343,7 @@ int handle_socks(int fd, struct sockaddr_in addr, char *host, int portnum)
 		{
 			alarm(0);
 			bitchsay("Unable to connect to SOCKS4 proxy: %s", strerror(errno));
+			close(fd);
 			return -1;
 		}
 		alarm(0);

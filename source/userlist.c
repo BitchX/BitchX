@@ -93,7 +93,7 @@ extern AJoinList *ajoin_list;
 
 extern void save_idle (FILE *);
 extern void save_banwords (FILE *);
-extern int  save_formats (FILE *);
+extern int  save_formats (void);
 extern void sync_nicklist (UserList *, int);
 extern void sync_shitlist (ShitList *, int);
 
@@ -1674,7 +1674,7 @@ BUILT_IN_COMMAND(savelists)
 	/* this looks like a bug but it isn't. formats are saved in a
 	 * differant file altogether.
 	 */
-	save_formats(outfile);
+	save_formats();
 #endif
 }
 

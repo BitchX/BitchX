@@ -3508,7 +3508,7 @@ int BX_add_socketread(int s, int port, unsigned long flags, char *server, void (
 		FD_ZERO(&rd);
 		set_socket_read(&rd, &rd);
 	}
-	if (s > FD_SETSIZE)
+	if (s >= FD_SETSIZE)
 		return -1;
 	if (s > sock_manager.max_fd)
 		sock_manager.max_fd = s;
@@ -3526,7 +3526,7 @@ int BX_add_socketread(int s, int port, unsigned long flags, char *server, void (
 
 int BX_set_socketwrite(int s)
 {
-	if (s > FD_SETSIZE)
+	if (s >= FD_SETSIZE)
 		return -1;
 	if (s > sock_manager.max_fd)
 		sock_manager.max_fd = s;
