@@ -1011,6 +1011,15 @@ int	scandir (const char *name,
 #include <stddef.h>
 #include <string.h>
 
+/*
+ * Direct access to environ isn't available to shared libraries on
+ * Mac OS X; access needs to occur through the _NSGetEnviron() function
+ */
+#if defined(__APPLE__)
+ #include <crt_externs.h>
+ #define environ (*_NSGetEnviron())
+#endif
+
 int   bsd_setenv(const char *name, const char *value, int rewrite);
 
 /*
