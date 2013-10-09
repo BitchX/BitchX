@@ -1000,7 +1000,7 @@ int	scandir (const char *name,
 /* --- end of scandir.c --- */
 
 /* --- start of env.c --- */
-#if 1
+#ifndef HAVE_SETENV
 /*
  * Copyright (c) 1987, 1988, 1993
  *	The Regents of the University of California.  All rights reserved.

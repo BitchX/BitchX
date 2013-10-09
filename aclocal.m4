@@ -1344,6 +1344,13 @@ AC_DEFUN(AC_CHECK_PLUGIN_SUPPORT,
             SHLIB_LD="ld -shared"
         fi
         ;;
+      FreeBSD-1.*)
+        dnl It sucks that I to have to do this.
+        AC_MSG_ERROR(sorry, no plugins on $ac_cv_system_version)
+        ;;
+      FreeBSD-2.*)
+        SHLIB_LD="ld -Bshareable"
+        ;;
       FreeBSD*)
         SHLIB_CFLAGS="-fPIC"
         SHLIB_LD="$CC -shared"
@@ -1419,7 +1426,7 @@ AC_DEFUN(AC_CHECK_PLUGIN_SUPPORT,
         ;;
       CYGWIN*)
         SHLIB_SUFFIX=".dll"
-        SHLIB_LD="dllwrap --export-all --output-def \$(PLUGIN_NAME).def --implib lib\$(PLUGIN_NAME).a --driver-name \$(CC)"
+        SHLIB_LD="$CC -shared"
         ;;
       OS/2*)
         SHLIB_SUFFIX=".dll"

@@ -1,4 +1,4 @@
-/* include/defs.h.in.  Generated from configure.in by autoheader.  */
+/* include/defs.h.in.  Generated from configure.ac by autoheader.  */
 
 /* Define this if bcopy is declared in string.h. */
 #undef BCOPY_DECLARED
@@ -194,6 +194,9 @@
 
 /* Define to 1 if you have the `select' function. */
 #undef HAVE_SELECT
+
+/* Define to 1 if you have the `setenv' function. */
+#undef HAVE_SETENV
 
 /* Define to 1 if you have the `setsid' function. */
 #undef HAVE_SETSID

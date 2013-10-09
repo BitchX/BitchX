@@ -3035,7 +3035,7 @@ BUILT_IN_COMMAND(setenvcmd)
 	char *env_var;
 
 	if ((env_var = next_arg(args, &args)) != NULL)
-		bsd_setenv(env_var, args, 1);
+		setenv(env_var, args, 1);
 	else
 		say("Usage: SETENV <var-name> <value>");
 }

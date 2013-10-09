@@ -195,7 +195,7 @@ if test x"$cross_compiling" != x"yes"; then
   AC_FUNC_SETPGRP
 fi
 AC_FUNC_STRFTIME
-AC_CHECK_FUNCS(socket gethostname gettimeofday strtoul strlcpy strlcat stpcpy vsnprintf snprintf setsid strerror uname getrusage sysconf getpgid killpg getlogin realpath fchdir getpass fpathconf getpwent setvbuf select mkstemp memmove scandir)
+AC_CHECK_FUNCS(socket gethostname gettimeofday strtoul strlcpy strlcat stpcpy vsnprintf snprintf setsid strerror uname getrusage sysconf getpgid killpg getlogin realpath fchdir getpass fpathconf getpwent setvbuf select mkstemp memmove scandir setenv)
 dnl Need these for Solaris
 AC_CHECK_FUNC(gethostbyname,,
   AC_CHECK_LIB(nsl, gethostbyname, LIBS="-lnsl $LIBS",))
@@ -1013,7 +1013,7 @@ GZIP_ENV="--best"
 BZIP2="-9 --repetitive-best"
 
 dnl Should I keep this or not?
-if test -n "$EMXOS2" -o -n "$MINGWIN32"; then
+if test -n "$CYGWIN" -o -n "$EMXOS2" -o -n "$MINGWIN32"; then
   bindir="\$(IRCLIB)"
   INSTALL_IRC="\$(IRCLIB)/\$(_VERSION_)\$(EXEEXT)"
   IRCLIB="\${prefix}/BitchX"

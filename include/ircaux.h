@@ -262,10 +262,13 @@ char	*ulongcomma		(unsigned long);
 	unsigned long 	strtoul (const char *, char **, int);
 #endif
 
+#ifndef HAVE_SETENV
 	char *	bsd_getenv (const char *);
 	int	bsd_putenv (const char *);
 	int	bsd_setenv (const char *, const char *, int);
 	void	bsd_unsetenv (const char *);
+#define setenv bsd_setenv
+#endif
 
 #ifndef HAVE_INET_ATON
 	int	inet_aton (const char *, struct in_addr *);
