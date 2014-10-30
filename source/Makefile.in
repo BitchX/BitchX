@@ -37,7 +37,7 @@ INSTALL_IRC = @INSTALL_IRC@
 IRCLIB = @IRCLIB@
 
 CC = @CC@
-DEFS = @INCLUDES@
+DEFS = @INCLUDES@ @CPPFLAGS@
 LIBS = @LIBS@
 
 # Tcl library.
@@ -51,6 +51,7 @@ TCL_SRCS = @TCL_SRCS@
 # Set this to -g if you want to be able to debug the client, otherwise
 # use -O to have the compiler do some optimization instead.
 CFLAGS = @CFLAGS@
+CPPFLAGS= @CPPFLAGS@
 
 # Set this to -s if you want the binary to be stripped.
 LDFLAGS = @LDFLAGS@
