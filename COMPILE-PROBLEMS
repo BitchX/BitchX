@@ -5,3 +5,7 @@ warnings in dcc.c to appear, but everything works as advertised.
 HPUX seems to have some header files problems.
 in particular. #include <sys/types.h> can't be included before #include
 <time.h> or #include <sys/time.h>
+
+OpenBSD uses pax instead of GNU cpio.  Since pax does not support the -R
+flag, remove "-R `id -un`:`id -gn`" from the cpio command under the 
+installhelp section of the Makefile after running the configure script. 
